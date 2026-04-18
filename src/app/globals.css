@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/*
+ * StudyTok Admin — Dark-only design system
+ * 
+ * Tailwind CSS v4 uses @theme for design tokens.
+ * We define ALL color values directly here (no var() indirection)
+ * to avoid the TW4 opacity modifier bug with CSS variables.
+ */
+
+@theme {
+  /* ─── Core Palette ─────────────────────────────────── */
+  --color-background: #020617;
+  --color-foreground: #f1f5f9;
+
+  --color-card: #0a1628;
+  --color-card-foreground: #f1f5f9;
+
+  --color-popover: #0f172a;
+  --color-popover-foreground: #f1f5f9;
+
+  --color-primary: #38bdf8;
+  --color-primary-foreground: #020617;
+
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f1f5f9;
+
+  --color-muted: #0f172a;
+  --color-muted-foreground: #94a3b8;
+
+  --color-accent: #1e293b;
+  --color-accent-foreground: #f1f5f9;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fef2f2;
+
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+  --color-ring: #38bdf8;
+
+  /* ─── Radii ────────────────────────────────────────── */
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: 
+      radial-gradient(ellipse at 10% 20%, rgba(56, 189, 248, 0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(139, 92, 246, 0.07) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* ─── Utility Classes ──────────────────────────────────── */
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@utility glass {
+  background-color: var(--color-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateZ(0);
+}
+
+@utility bento-card {
+  background-color: var(--color-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+
+  &:hover {
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 16px 48px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px) translateZ(0);
+  }
+}
+
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
