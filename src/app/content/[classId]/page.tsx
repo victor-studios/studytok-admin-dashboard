@@ -74,7 +74,10 @@ export default async function ClassDetailPage({ params }: { params: Promise<{ cl
             <h2 className="text-lg font-bold text-white">Add Subject</h2>
           </div>
           
-          <form action={createSubject.bind(null, acClass.id)} className="space-y-4">
+          <form action={async (formData) => {
+             "use server";
+             await createSubject(acClass.id, formData);
+          }} className="space-y-4">
             <div>
               <label className="block text-xs font-medium text-zinc-400 mb-1">Subject Title</label>
               <input name="name" required placeholder="e.g. Physics" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-cyan-500 text-sm" />
